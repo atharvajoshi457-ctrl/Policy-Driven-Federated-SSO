@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Federated SSO | Identity Gateway</title>
+<link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<header><div class="brand-mark">F</div><div><h1>Federated Identity Gateway</h1><p>Policy-driven cross-organization access</p></div><span class="tag">EDUCATIONAL PROTOTYPE</span></header>
+<main>
+<section class="intro">
+  <div><p class="eyebrow">IDENTITY FEDERATION / TOPIC 14</p><h2>One trusted identity.<br><em>Policy-checked access.</em></h2>
+  <p class="muted">Authenticate with your home organization, request a partner resource, and let the policy decision point evaluate access before the application responds.</p></div>
+  <div class="flow"><span>Home IdP</span><b>→</b><span>Federation Gateway</span><b>→</b><span>Policy Engine</span><b>→</b><span>Partner App</span></div>
+</section>
+<div class="grid">
+<section class="panel">
+ <div class="panel-head"><div><p class="eyebrow">01 / AUTHENTICATION</p><h3>Home organization sign-in</h3></div><span class="dot"></span></div>
+ <label for="user">Select a demo identity</label><select id="user"></select>
+ <button id="login">Sign in at Home IdP</button><div id="identity" class="result muted">No identity token issued yet.</div>
+</section>
+<section class="panel">
+ <div class="panel-head"><div><p class="eyebrow">02 / FEDERATION</p><h3>Request partner access</h3></div><span class="dot"></span></div>
+ <label for="partner">Partner organization</label><select id="partner"></select>
+ <label for="resource">Protected resource</label><select id="resource"></select>
+ <button id="access" class="secondary" disabled>Evaluate access policy</button>
+ <div id="decision" class="result muted">Sign in first, then request a resource.</div>
+</section>
+<section class="panel wide">
+ <div class="panel-head"><div><p class="eyebrow">03 / TRUST & POLICY</p><h3>Federation control plane</h3></div><span class="pill">LIVE CONFIGURATION</span></div>
+ <div class="two-col"><div><h4>Trusted partners</h4><div id="partners"></div></div><div><h4>Access policies</h4><div id="policies"></div></div></div>
+</section>
+<section class="panel wide">
+ <div class="panel-head"><div><p class="eyebrow">04 / ACCOUNTABILITY</p><h3>Security audit trail</h3></div><button id="refresh" class="small">Refresh log</button></div>
+ <div class="table-wrap"><table><thead><tr><th>Time</th><th>User</th><th>Partner</th><th>Resource</th><th>Decision</th><th>Reason</th></tr></thead><tbody id="audit"><tr><td colspan="6" class="muted">No events yet.</td></tr></tbody></table></div>
+</section>
+</div>
+<footer>Demo only · Simulated identity provider and MFA · HMAC-signed demo assertion · SQLite audit log</footer>
+</main><script src="/static/app.js"></script>
+</body></html>
